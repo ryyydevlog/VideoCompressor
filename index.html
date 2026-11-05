@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MP4 Compressor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card">
+    <h1>MP4 Compressor</h1>
+    <p>Compress videos locally in your browser. Your file never leaves your device.</p>
+
+    <div class="dropzone" id="dropzone">
+      <strong>Click to choose an MP4</strong><br />
+      or drag and drop a video here
+    </div>
+
+    <input type="file" id="fileInput" accept="video/mp4" />
+
+    <div class="controls">
+      <div>
+        <label for="quality">Compression quality</label>
+        <select id="quality">
+          <option value="28">High quality</option>
+          <option value="32" selected>Balanced</option>
+          <option value="36">Smaller file</option>
+          <option value="40">Smallest file</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="scale">Resolution</label>
+        <select id="scale">
+          <option value="none">Keep original</option>
+          <option value="1920:-2">1080p</option>
+          <option value="1280:-2" selected>720p</option>
+          <option value="854:-2">480p</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="audio">Audio bitrate</label>
+        <select id="audio">
+          <option value="128k">128 kbps</option>
+          <option value="96k" selected>96 kbps</option>
+          <option value="64k">64 kbps</option>
+          <option value="none">Remove audio</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="compressBtn" disabled>Compress MP4</button>
+
+    <div class="status" id="status"></div>
+
+    <div class="progress hidden" id="progressWrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="result" id="result">
+      <p id="resultText"></p>
+      <a id="downloadLink" download="compressed.mp4">Download compressed MP4</a>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
